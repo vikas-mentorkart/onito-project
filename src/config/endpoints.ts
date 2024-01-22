@@ -1,0 +1,1 @@
+export const GET_COUNTRIES =(val:String)=> `https://restcountries.com/v3.1/name/${val}`;
