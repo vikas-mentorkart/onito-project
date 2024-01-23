@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import PeronalDetails from "./PeronalDetails";
 import AddressDetails from "./AddressDetails";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 const Form: React.FC = () => {
+  const navigate = useNavigate();
   interface FormValues {
     full_name: String;
     age: Number;
@@ -29,12 +31,14 @@ const Form: React.FC = () => {
         "userData",
         JSON.stringify([...parsedData, { ...data, selectedCountry }])
       );
+      navigate("/");
       return;
     }
     localStorage.setItem(
       "userData",
       JSON.stringify([{ ...data, selectedCountry }])
     );
+    navigate("/");
   };
   return (
     <div className="bg-gray-100 h-lvh">
