@@ -11,7 +11,7 @@ export default function Datatable({ ...props }: Config) {
     return () => {
       dt.destroy();
     };
-  }, []);
+  }, [props]);
   return (
       <div className="row justify-content-center">
         <div className="col-md-10">
