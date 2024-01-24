@@ -1,18 +1,16 @@
 import React, { useRef } from "react";
 import { requiredValidator } from "../../utils/validators";
-import ErrorMessage from "../ErrorMessage";
 interface Prop {
   register: Function;
   errors: Object;
 }
 const PeronalDetails: React.FC<Prop> = ({ register, errors }) => {
   const selectRef = useRef<HTMLSelectElement>(null);
-  console.log(errors);
   return (
     <div className="bg-gray-100 flex justify-center">
       <div className="container max-w-screen-lg mx-auto">
         <div>
-          <div className="bg-white rounded shadow-lg p-2 px-8 pt-8">
+          <div className="bg-white rounded p-2 px-8 pt-8">
             <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
               <div className="text-gray-600">
                 <p className="font-medium text-lg">Personal Details</p>

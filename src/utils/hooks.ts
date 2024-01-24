@@ -1,14 +1,9 @@
-type DebounceFunction = <F extends (...args: any[]) => any>(
-  func: F,
-  delay: number
-) => (...args: Parameters<F>) => void;
-
-export const debounce: DebounceFunction = (func, delay) => {
-  let timeoutId: NodeJS.Timeout;
-  return (...args: Parameters<typeof func>) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-};
+export const storeToLocalstorage = (data:Object, name:string)=>{
+  const dataStr = localStorage.getItem(name);
+  if(dataStr){
+    const parsedStr = [...JSON.parse(dataStr), data];
+    localStorage.setItem(name, JSON.stringify(parsedStr))
+    return;
+  }
+  localStorage.setItem(name, JSON.stringify([data]))
+}

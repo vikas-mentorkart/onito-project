@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Datatable from "./Datatable/Datatable";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers } from "../store/reducer";
+import { RootState } from "../store";
 const Users: React.FC = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState<Object[]>([]);
+  const dispatch = useDispatch();
+  const { data } = useSelector((state: RootState) => state.formReducer) || {};
   useEffect(() => {
     const dataStr = localStorage.getItem("userData");
     if (!!dataStr) {
-      setData(JSON.parse(dataStr));
+      dispatch(fetchUsers(JSON.parse(dataStr)));
     }
   }, []);
   const columns = [
